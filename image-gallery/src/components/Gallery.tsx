@@ -93,8 +93,9 @@ function Gallery() {
   ]);
 
   return (
-    <div className="gallery">
-      {images.map((image, index) => (
+    <div className="container mx-auto p-4">
+      <div className="grid grid-cols-2 md: grid-cols-4 lg: grid-cols-5 gap-4">
+        {images.map((image, index) => (
         <ImageItem
           key={image.id}
           src={image.src}
@@ -102,6 +103,7 @@ function Gallery() {
           isFeatured={index === 0}
         />
       ))}
+      </div>  
     </div>
   )
 }
