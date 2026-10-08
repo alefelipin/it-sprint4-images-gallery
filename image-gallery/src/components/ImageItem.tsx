@@ -10,7 +10,10 @@ function ImageItem({ src, alt, isFeatured }: ImageItemProps) {
     <img 
       src={src}
       alt={alt}
-      className={isFeatured ? "featured" : ""}
+      className={
+        isFeatured 
+        ? "gallery-image gallery-image--featured" 
+        : "gallery-image"}
     />
   )
 }
