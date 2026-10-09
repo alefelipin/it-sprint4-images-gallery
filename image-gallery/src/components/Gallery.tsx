@@ -12,10 +12,11 @@ import pudu from "../assets/images/pudu.png";
 import puma from "../assets/images/puma.png";
 import queltehue from "../assets/images/queltehue.png";
 import zorro from "../assets/images/zorro.png";
-import ImageItem from "./ImageItem";
-import type { GalleryImage } from "../types/image";
+import ImageItem from "./ImageItem.tsx";
+import type { GalleryImage } from "../types/image.ts";
 import { useState } from "react";
 import "./Gallery.css";
+
 
 function Gallery() {
 
@@ -93,15 +94,17 @@ function Gallery() {
   ]);
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-      {images.map((image, index) => (
-      <ImageItem
-        key={image.id}
-        src={image.src}
-        alt={image.name}
-        isFeatured={index === 0}
-      />
-    ))}
+    <div className="container mx-auto 10px">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        {images.map((image, index) => (
+        <ImageItem
+          key={image.id}
+          src={image.src}
+          alt={image.name}
+          isFeatured={index === 0}
+        />
+      ))}
+      </div>
     </div>  
   )
 }

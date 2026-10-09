@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button"
 
 interface ImageItemProps {
   src: string;
@@ -7,14 +8,24 @@ interface ImageItemProps {
 
 function ImageItem({ src, alt, isFeatured }: ImageItemProps) {
   return (
-    <img 
-      src={src}
-      alt={alt}
+    <Button
+      type="button"
+      variant="ghost" 
       className={
         isFeatured 
-        ? "gallery-image gallery-image--featured" 
-        : "gallery-image"}
-    />
+          ? "p-0 h-auto hover:bg-transparent lg:col-span-2 lg:row-span-2"
+          : "p-0 h-auto hover:bg-transparent"
+      }
+    >
+      <img 
+        src={src}
+        alt={alt}
+        className={
+          isFeatured 
+          ? "gallery-image gallery-image--featured" 
+          : "gallery-image"}
+      />
+    </Button>
   )
 }
 
