@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+
 
 interface ImageItemProps {
   src: string;
@@ -11,6 +11,7 @@ function ImageItem({ src, alt, isFeatured }: ImageItemProps) {
     <img 
       src={src}
       alt={alt}
+      tabIndex={0}
       className={
         isFeatured 
         ? "gallery-image gallery-image--featured lg:col-span-2 lg:row-span-2" 
