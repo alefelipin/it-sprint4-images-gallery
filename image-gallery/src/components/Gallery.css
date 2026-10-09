@@ -5,10 +5,15 @@
 }
 
 .gallery-image--featured {
-  width: 600px;
-  height: 400px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+@media (min-width: 1024px) {
+  .gallery-image--featured {
+    width: 600px;
+    height: 400px;
+  }
 }
 
 .gallery-image--featured:hover {
