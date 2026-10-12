@@ -93,7 +93,9 @@ export default function Gallery() {
   ]);
 
   function handleDelete(id: string) {
+    if (window.confirm("¿Eliminar esta imagen?")) {
     setImages(images.filter((image) => image.id !== id));
+    }
   }
 
   return (

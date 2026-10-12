@@ -20,7 +20,11 @@ function ImageItem({ image, isFeatured = false, onDelete }: ImageItemProps) {
           : "gallery-image"}
       /> 
 
-      <Button onClick={() => onDelete(image.id)}>
+      <Button onClick={(event) => {
+        event.stopPropagation();
+        onDelete(image.id)}
+        }
+      >
         Eliminar
       </Button>
     </article>
