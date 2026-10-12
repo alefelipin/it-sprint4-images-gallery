@@ -17,10 +17,9 @@ import type { GalleryImage } from "../types/image.ts";
 import { useState } from "react";
 import "./Gallery.css";
 
+export default function Gallery() {
 
-function Gallery() {
-
-  const [images] = useState<GalleryImage[]> ([
+  const [images, setImages] = useState<GalleryImage[]> ([
 {
   id: "1",
   src: carpintero,
@@ -93,15 +92,21 @@ function Gallery() {
 },
   ]);
 
+  function handleDelete(id: string) {
+    if (window.confirm("¿Eliminar esta imagen?")) {
+    setImages(images.filter((image) => image.id !== id));
+    }
+  }
+
   return (
     <div className="container mx-auto 10px">
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {images.map((image, index) => (
         <ImageItem
           key={image.id}
-          src={image.src}
-          alt={image.name}
+          image={image}
           isFeatured={index === 0}
+          onDelete={handleDelete}
         />
       ))}
       </div>
@@ -109,4 +114,3 @@ function Gallery() {
   )
 }
 
-export default Gallery;
