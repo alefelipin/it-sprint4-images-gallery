@@ -1,22 +1,29 @@
-
+import { Button } from "@base-ui/react";
+import type { GalleryImage } from "../types/image";
 
 interface ImageItemProps {
-  src: string;
-  alt: string;
+  image: GalleryImage;
   isFeatured: boolean;
+  onDelete: (id: string) => void;
 }
 
-function ImageItem({ src, alt, isFeatured }: ImageItemProps) {
+function ImageItem({ image, isFeatured = false, onDelete }: ImageItemProps) {
   return (
-    <img 
-      src={src}
-      alt={alt}
-      tabIndex={0}
-      className={
-        isFeatured 
-        ? "gallery-image gallery-image--featured lg:col-span-2 lg:row-span-2" 
-        : "gallery-image"}
-    />   
+    <article>
+      <img 
+        src={image.src}
+        alt={image.name}
+        tabIndex={0}
+        className={
+          isFeatured 
+          ? "gallery-image gallery-image--featured lg:col-span-2 lg:row-span-2" 
+          : "gallery-image"}
+      /> 
+
+      <Button onClick={() => onDelete(image.id)}>
+        Eliminar
+      </Button>
+    </article>
   )
 }
 
