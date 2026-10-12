@@ -1,5 +1,6 @@
 import { Button } from "@base-ui/react";
 import type { GalleryImage } from "../types/image";
+import trashIcon from "../assets/icons/trash-icon.png"
 
 interface ImageItemProps {
   image: GalleryImage;
@@ -21,12 +22,20 @@ function ImageItem({ image, isFeatured = false, onDelete }: ImageItemProps) {
       /> 
 
       <Button 
-        className="bg-red-500 text-white px-2 py-0.5 text-xs rounded hover:bg-red-700"
+        className="
+        inline-flex flex-row items-center gap-1 whitespace-nowrap
+        bg-red-500 text-white px-2 py-0.5 text-xs rounded hover:bg-red-700"
         onClick={(event) => {
         event.stopPropagation();
         onDelete(image.id)}
         }
       >
+        <img
+          src={trashIcon}
+          alt=""
+          className="w-4 h-4"
+        />
+        
         Delete
       </Button>
     </article>
