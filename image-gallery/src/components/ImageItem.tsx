@@ -20,12 +20,14 @@ function ImageItem({ image, isFeatured = false, onDelete }: ImageItemProps) {
           : "gallery-image"}
       /> 
 
-      <Button onClick={(event) => {
+      <Button 
+        className="bg-red-500 text-white px-2 py-0.5 text-xs rounded hover:bg-red-700"
+        onClick={(event) => {
         event.stopPropagation();
         onDelete(image.id)}
         }
       >
-        Eliminar
+        Delete
       </Button>
     </article>
   )
