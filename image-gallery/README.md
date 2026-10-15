@@ -1,24 +1,28 @@
 # Images Gallery
 
-Galería interactiva de imágenes desarrollada con **React** y **TypeScript** como parte del Sprint 4 del curso de programación de IT Academy.
+Interactive image gallery developed with **React** and **TypeScript** as part of Sprint 4 of the IT Academy programming course.
 
-El proyecto está orientado a practicar conceptos fundamentales de React mediante una galería de fauna chilena, trabajando con componentes reutilizables, props, estado, eventos y actualización inmutable de datos.
+The project is designed to practice fundamental React concepts through a Chilean wildlife gallery, working with reusable components, props, state, events, and immutable state updates.
 
-## Características
+## Preview
 
-- Galería de imágenes de fauna chilena.
-- Diseño responsive mediante clases de Tailwind CSS.
-- Primera imagen de la colección mostrada como imagen destacada.
-- Componentes reutilizables para cada elemento de la galería.
-- Eliminación de imágenes desde la interfaz.
-- Confirmación antes de eliminar una imagen mediante `window.confirm()`.
-- Actualización inmutable del estado con `filter()`.
-- Uso de `event.stopPropagation()` para controlar la propagación de eventos.
-- Botón de eliminación con ícono de papelera.
-- Tipado de datos y props con TypeScript.
-- Texto alternativo (`alt`) para las imágenes.
+![Image Gallery preview](../itacademy-projects/sprint-4/it-sprint4-images-gallery/image-gallery/src/assets/images/gallery-preview.png)
 
-## Tecnologías
+## Features
+
+- Chilean wildlife image gallery.
+- Responsive design using Tailwind CSS utility classes.
+- The first image in the collection is displayed as the featured image.
+- Reusable components for each gallery item.
+- Image deletion directly from the interface.
+- Confirmation before deleting an image using `window.confirm()`.
+- Immutable state updates with `filter()`.
+- Use of `event.stopPropagation()` to control event propagation.
+- Delete button with a trash icon.
+- Type-safe data and props with TypeScript.
+- Alternative text (`alt`) for images.
+
+## Technologies
 
 - React
 - TypeScript
@@ -28,10 +32,12 @@ El proyecto está orientado a practicar conceptos fundamentales de React mediant
 - CSS
 - Git / GitHub
 
-## Estructura principal
+## Main Project Structure
 
 ```text
 image-gallery/
+├── docs/
+│   └── gallery-preview.png
 └── src/
     ├── assets/
     │   ├── icons/
@@ -46,9 +52,9 @@ image-gallery/
         └── image.ts
 ```
 
-## Modelo de datos
+## Data Model
 
-Cada imagen de la galería utiliza la interfaz `GalleryImage`:
+Each gallery image uses the `GalleryImage` interface:
 
 ```ts
 export interface GalleryImage {
@@ -58,23 +64,23 @@ export interface GalleryImage {
 }
 ```
 
-De esta forma, TypeScript garantiza que cada elemento tenga un identificador, una ruta de imagen y un nombre.
+This allows TypeScript to ensure that every gallery item has an identifier, an image source, and a name.
 
-## Componentes principales
+## Main Components
 
 ### `Gallery`
 
-Es el componente encargado de almacenar y gestionar el estado principal de la galería.
+This component stores and manages the main gallery state.
 
-Entre sus responsabilidades se encuentran:
+Its responsibilities include:
 
-- Mantener el array de imágenes mediante `useState`.
-- Renderizar los elementos con `map()`.
-- Determinar qué imagen aparece como destacada.
-- Gestionar la eliminación de imágenes.
-- Actualizar el estado de manera inmutable.
+- Keeping the images array in state using `useState`.
+- Rendering gallery items with `map()`.
+- Determining which image is featured.
+- Managing image deletion.
+- Updating state immutably.
 
-La primera posición del array determina la imagen destacada:
+The first position in the array determines the featured image:
 
 ```tsx
 isFeatured={index === 0}
@@ -82,90 +88,89 @@ isFeatured={index === 0}
 
 ### `ImageItem`
 
-Representa individualmente cada elemento de la galería.
+This component represents an individual gallery item.
 
-Recibe mediante props la información necesaria para mostrar la imagen y ejecutar las acciones correspondientes.
+It receives the information required to display the image and execute its actions through props.
 
-Entre sus responsabilidades se encuentran:
+Its responsibilities include:
 
-- Mostrar la imagen.
-- Aplicar estilos diferentes cuando la imagen es destacada.
-- Mostrar el botón de eliminación.
-- Ejecutar el evento de eliminación.
-- Evitar la propagación no deseada del evento mediante `event.stopPropagation()`.
+- Displaying the image.
+- Applying different styles when the image is featured.
+- Displaying the delete button.
+- Executing the delete event.
+- Preventing unwanted event propagation with `event.stopPropagation()`.
 
-## Eliminación de imágenes
+## Image Deletion
 
-La eliminación se gestiona desde el componente que posee el estado.
+Image deletion is managed by the component that owns the state.
 
-Ejemplo de actualización inmutable:
+Example of an immutable update:
 
 ```tsx
-
 function handleDelete(id: string) {
-    if (window.confirm("¿Eliminar esta imagen?")) {
+  if (window.confirm("Are you sure you want to delete this image?")) {
     setImages(images.filter((image) => image.id !== id));
-    }
-  };
+  }
+}
 ```
 
-`filter()` crea un nuevo array en lugar de modificar directamente el estado existente.
+`filter()` creates a new array instead of directly modifying the existing state.
 
-## Instalación
+## Installation
 
-Clona el repositorio:
+Clone the repository:
 
 ```bash
 git clone https://github.com/alefelipin/it-sprint4-images-gallery.git
 ```
 
-Entra al proyecto:
+Enter the project directory:
 
 ```bash
 cd it-sprint4-images-gallery/image-gallery
 ```
 
-Instala las dependencias:
+Install the dependencies:
 
 ```bash
 npm install
 ```
 
-Inicia el servidor de desarrollo:
+Start the development server:
 
 ```bash
 npm run dev
 ```
 
-Después abre en el navegador la dirección que indique la terminal.
+Then open the local URL shown in the terminal.
 
-## Flujo de trabajo con Git
+## Git Workflow
 
-El proyecto se desarrolla utilizando ramas por funcionalidad.
+The project is developed using feature branches.
 
-Ejemplos:
+Examples:
 
 ```text
 feature/styles
 feature/event-handlers
 ```
 
-Los cambios se integran posteriormente mediante Pull Request.
+Changes are later integrated through Pull Requests.
 
-## Objetivos de aprendizaje
+## Learning Objectives
 
-Este proyecto permite practicar:
+This project is used to practice:
 
-- Creación y composición de componentes React.
-- Props tipadas con TypeScript.
-- Estado con `useState`.
-- Renderizado de listas con `map()`.
-- Manejo de eventos.
-- Comunicación entre componentes padre e hijo.
-- Actualizaciones inmutables del estado.
-- Diseño responsive.
-- Gestión de ramas y Pull Requests con Git y GitHub.
+- Creating and composing React components.
+- Typing props with TypeScript.
+- Managing state with `useState`.
+- Rendering lists with `map()`.
+- Handling events.
+- Communication between parent and child components.
+- Immutable state updates.
+- Responsive design.
+- Managing branches and Pull Requests with Git and GitHub.
 
-## Autor
+## Author
 
-Proyecto desarrollado como ejercicio práctico del Sprint 4 de IT Academy.
+Project developed as a practical exercise for Sprint 4 of IT Academy.
