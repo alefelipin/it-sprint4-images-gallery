@@ -10,17 +10,16 @@ interface ImageItemProps {
 
 function ImageItem({ image, isFeatured = false, onDelete }: ImageItemProps) {
   return (
-    <article>
+    <article className={isFeatured ? "lg:col-span-2 lg:row-span-2" : "" }>
       <img 
         src={image.src}
         alt={image.name}
         tabIndex={0}
         className={
           isFeatured 
-          ? "gallery-image gallery-image--featured lg:col-span-2 lg:row-span-2" 
+          ? "gallery-image gallery-image--featured" 
           : "gallery-image"}
       /> 
-
       <Button 
         className="
         inline-flex flex-row items-center gap-1 whitespace-nowrap
@@ -35,7 +34,6 @@ function ImageItem({ image, isFeatured = false, onDelete }: ImageItemProps) {
           alt=""
           className="w-4 h-4"
         />
-        
         Delete
       </Button>
     </article>

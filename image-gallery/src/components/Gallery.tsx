@@ -93,13 +93,13 @@ export default function Gallery() {
   ]);
 
   function handleDelete(id: string) {
-    if (window.confirm("¿Eliminar esta imagen?")) {
+    if (window.confirm("Are you sure you want to delete this image?")) {
     setImages(images.filter((image) => image.id !== id));
     }
   }
 
   return (
-    <div className="container mx-auto 10px">
+    <div className="container mx-auto">
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {images.map((image, index) => (
         <ImageItem

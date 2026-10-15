@@ -1,5 +1,5 @@
 .gallery-image {
-  width: 300px;
+  width: 100%px;
   height: 200px;
   object-fit: cover;
 }
@@ -11,8 +11,8 @@
 
 @media (min-width: 1024px) {
   .gallery-image--featured {
-    width: 600px;
-    height: 400px;
+    width: 100%;
+    height: 95%;
   }
 }
 
